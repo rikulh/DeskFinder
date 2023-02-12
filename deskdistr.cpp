@@ -93,7 +93,7 @@ void deskDistr::saveDesk(deskDistr desk,string filename) {
 
 deskDistr deskDistr::makeRandomInstance(vector<person> people) {
     vector<int> desks;
-    for (int i = 0;i < 39;i++) {
+    for (int i = 0;i < 49;i++) {
         desks.push_back(i);
     }
     random_device rd;
@@ -324,7 +324,7 @@ string deskDistr::detail() const {
     return str;
 }
 
-string deskDistr::output(string path) const {
+string deskDistr::print(string path) const {
     std::ifstream reading(path, std::ios::in);
     nlohmann::json data;
     reading >> data;

@@ -37,7 +37,7 @@ public:
     vector<int> around(int index) const;
 
     string detail() const;
-    string output(string path) const;
+    string print(string path) const;
     string analysis() const;
     void putJSON(string filename) const;
     static void putJSONs(vector<deskDistr> desks,string filename);
