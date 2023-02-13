@@ -57,7 +57,7 @@ deskDistr localSearch::maximin() {
         int p = best_result.miner();
         double best_fitness = 0;
         int choice;
-        for (int q = 0;q < 39;q++) {
+        for (int q = 0;q < population.length;q++) {
             if (q != p) {
                 deskDistr swapped = best_result.swap(p,q);
                 if ((best_result.fitness(p) < swapped.fitness(p)) && (best_fitness < swapped.fitnessSum())) {
@@ -75,6 +75,7 @@ deskDistr localSearch::maximin() {
         }
         count++;
     }
+        cout << "count" << endl;
     return best_result;
 }
 
@@ -98,8 +99,8 @@ deskDistr localSearch::maxstable() {
         double best_fitness = -500;
         int choicep = 0;
         int choiceq = 0;
-        for (int p = 0;p < 39;p++) {
-            for (int q = 38;q > p;q--) {
+        for (int p = 0;p < population.length;p++) {
+            for (int q = population.length-1;q > p;q--) {
                 deskDistr swapped = best_result.swap(p,q);
                 // cout << best_result.fitnessSum() << "&" << swapped.fitnessSum() << "%" << best_fitness << endl;
                 if ((best_result.fitness(p) < swapped.fitness(p)) && (best_result.fitness(q) < swapped.fitness(q)) && (swapped.fitnessSum() > best_fitness)) {

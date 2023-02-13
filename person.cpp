@@ -53,14 +53,14 @@ vector<person> person::readPeople(string path,string type) {
     reading >> data;
     vector<person> people;
     if (type == "a") {
-        for (int i = 0;i < 39;i++) {
+        for (int i = 0;i < 49;i++) {
             vector<int> likes = data["likes"][i];
             vector<double> weights = data["weights"][i];
             bool front = data["front"][i];
             people.push_back(person(i,likes,weights,front));
         }
     } else {
-        for (int i = 0;i < 39;i++) {
+        for (int i = 0;i < 49;i++) {
             vector<int> likes = data[i]["likes"];
             vector<double> weights = data[i]["weights"];
             bool front = data[i]["front"];

@@ -1,5 +1,4 @@
 #include "deskdistr.hpp"
-#include "genealgo.hpp"
 #include "person.hpp"
 #include "localsearch.hpp"
 #include <iostream>
@@ -80,7 +79,7 @@ int main(int argc, char *argv[])
             bool changed = false;
             for (int i = 0; i < 10; i++)
             {
-                deskDistr desk = deskDistr::makeRandomInstance(people);
+                deskDistr desk = deskDistr::makeRandomInstance(people, 49);
                 localSearch localEng = localSearch(desk, 500);
                 deskDistr mxi = localEng.maximin();
                 if (desks[worst(desks)].fitnessMin() < mxi.fitnessMin())
@@ -94,6 +93,7 @@ int main(int argc, char *argv[])
                     desks[worst(desks)] = mxi;
                     changed = true;
                 }
+
             }
             if (changed)
             {
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
             vector<person> people = person::readPeople(params["-p"], "a");
             for (int i = 0; i < 10; i++)
             {
-                deskDistr desk = deskDistr::makeRandomInstance(people);
+                deskDistr desk = deskDistr::makeRandomInstance(people, 49);
                 result.push_back(desk);
             }
             deskDistr::putJSONs(result, params["-o"]);
@@ -134,6 +134,23 @@ int main(int argc, char *argv[])
                 cout << "desk " << i << endl;
                 cout << desks[i].detail() << endl;
                 cout << desks[i].analysis() << endl;
+            }
+        }
+        else
+        {
+            cout << "Error: missing parameter(s)" << endl;
+        }
+    }
+    else if (command == "detail")
+    {
+        if (params.count("-p") * params.count("-d") != 0)
+        {
+            vector<person> people = person::readPeople(params["-p"], "a");
+            vector<deskDistr> desks = deskDistr::readDesks(people, params["-d"]);
+            for (int i = 0; i < desks.size(); i++)
+            {
+                cout << "desk " << i << endl;
+                cout << desks[i].detail() << endl; // namelist.json
             }
         }
         else

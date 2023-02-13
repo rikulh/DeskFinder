@@ -10,18 +10,18 @@ using namespace std;
 class deskDistr {
 public:
     deskDistr();
-    static deskDistr makeRandomInstance(vector<person> people);
-    static vector<deskDistr> makeRandomPopulation(vector<person> people, int number);
+    static deskDistr makeRandomInstance(vector<person> people, int length);
     static deskDistr readDesk(vector<person> people, string filename);
     static vector<deskDistr> readDesks(vector<person> people, string filename);
     static void saveDesks(vector<deskDistr> desks,string filename);
     static void saveDesk(deskDistr desks,string filename);
-    deskDistr(vector<person> people, vector<int> desks);
+    deskDistr(vector<person> people, vector<int> desks, int length);
     deskDistr(const deskDistr& rhs);
 
     vector<person> people;
     vector<int> desks;//indexが出席番号、内容が席
-    
+    int length;
+
     double maxer() const;
     double miner() const;
     
@@ -32,9 +32,6 @@ public:
     double evaluation(string evaltype) const;
 
     void mutate();
-    vector<deskDistr> crossover(deskDistr another);
-
-    vector<int> around(int index) const;
 
     string detail() const;
     string print(string path) const;
