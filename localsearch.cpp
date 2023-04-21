@@ -75,7 +75,6 @@ deskDistr localSearch::maximin() {
         }
         count++;
     }
-        cout << "count" << endl;
     return best_result;
 }
 

@@ -294,10 +294,10 @@ string deskDistr::analysis() const {
     result << title;
     for (int i = 0;i < this->length;i++) {
         // result << "[" << people[i].weights[0] << "," << people[i].weights[1] << "],";
-        result << "│ " << totwo(i+1) << "  │  " << totwo(desks[i]) << "  ";
+        result << "│" << totwo(i+1) << "   │" << totwo(desks[i]) << "    ";
         for (int j = 0;j < 5;j++) {
             if (people[i].likes.size() > j) {
-                result << "│" << totwo(people[i].likes[j]+1) << "," << to4(people[i].weights[j]);
+                result << "│" << totwo(people[i].likes[j]+1) << " " << to4(people[i].weights[j]);
             } else {
                 result << "│       ";
             }
