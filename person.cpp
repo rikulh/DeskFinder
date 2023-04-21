@@ -22,7 +22,6 @@ vector<person> person::randomPeople(int length) {
     vector<person> people;
     for (int i = 0;i < length;i++) {
         vector<int> likes;
-        uniform_int_distribution<double> distra(0, 1);
         vector<double> weights;
         for (int j = 0;j < 2;j++) {
             likes.push_back(distr(engine));
